@@ -1,0 +1,13 @@
+﻿
+@using UI.Controllers
+@using Microsoft.Web.Mvc
+@using System.Web.Mvc.Html
+@model object
+
+@{
+    ViewBag.Title = "AuditTemplates";
+}
+
+<h2>Audit Templates</h2>
+
+@(Html.ActionLink<AuditTemplateController>(x=>x.Create(),"Create"))
