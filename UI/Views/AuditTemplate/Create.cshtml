@@ -1,7 +1,14 @@
-﻿@model object
+﻿@using Dto
+@model AuditTemplateDto
 
 @{
     ViewBag.Title = "Audit Templates";
 }
 
 <h2>Audit Template</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.EditorForModel()
+    <input type="submit" value="Save"/>
+}
