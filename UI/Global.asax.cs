@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Autofac;
+using Autofac.Integration.Mvc;
+using Service;
 
 namespace UI
 {
@@ -31,10 +34,20 @@ namespace UI
 
         protected void Application_Start()
         {
-            AreaRegistration.RegisterAllAreas();
+            SetupIOC();
 
+            AreaRegistration.RegisterAllAreas();
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
+        }
+
+        private void SetupIOC()
+        {
+            var builder = new ContainerBuilder();
+            builder.RegisterControllers(typeof(MvcApplication).Assembly);
+            builder.RegisterType<CreateAuditTemplateCommand>().As<ICreateAuditTemplateCommand>();
+            var container = builder.Build();
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
         }
     }
 }
