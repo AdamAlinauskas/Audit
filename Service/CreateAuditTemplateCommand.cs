@@ -1,13 +1,15 @@
-﻿namespace Service
+﻿using Dto;
+
+namespace Service
 {
     public interface ICreateAuditTemplateCommand
     {
-        void Execute();
+        void Execute(AuditTemplateDto dto);
     }
 
     public class CreateAuditTemplateCommand : ICreateAuditTemplateCommand
     {
-        public void Execute()
+        public void Execute(AuditTemplateDto dto)
         {
             throw new System.NotImplementedException();
         }

@@ -26,7 +26,7 @@ namespace UI.Controllers
         [HttpPost]
         public RedirectToRouteResult Create(AuditTemplateDto auditTemplateDto)
         {
-            createAuditTemplate.Execute();
+            createAuditTemplate.Execute(auditTemplateDto);
             return RedirectToAction("Index");
         }
     }
